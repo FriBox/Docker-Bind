@@ -1,0 +1,13 @@
+#列出镜像
+docker images
+#将镜像命名TAG保存
+docker tag fribox/bind:latest fribox/bind:v1.00
+docker tag fribox/bind:latest streamwang/bind:v1.00
+#导出镜像保存
+docker save streamwang/bind -o FriBox.Docker-Bind.tar
+#导入镜像
+docker load -i FriBox.Docker-Bind.tar
+#登录Docker
+docker login
+#上传镜像
+docker push streamwang/bind:v1.00
