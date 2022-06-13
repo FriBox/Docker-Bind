@@ -1,4 +1,4 @@
-# Docker-Bind
+# docker-bind
 dockerfile for bind （Bind 的 Docker 镜像编译文件）
 
 Bind Url（Bind 官方页面）:<br>
@@ -18,7 +18,7 @@ docker save fribox/bind -o FriBox.Docker-Bind.tar
 
 ## Running the container (启动容器)
 ```
-docker run -d -p 10000:10000 fribox/bind
+docker run --name bind -d --restart=always --publish 53:53/tcp --publish 53:53/udp --publish 10000:10000/tcp fribox/bind
 ```
 
 ## Log into webmin-bind and manage your server （登录页面Webmin管理页面进行Bind管理）
