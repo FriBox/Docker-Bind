@@ -1,13 +1,17 @@
 #列出镜像
 docker images
 #将镜像命名TAG保存
-docker tag fribox/bind:latest fribox/bind:v1.00
-docker tag fribox/bind:latest streamwang/bind:v1.00
+docker tag fribox/Bind:latest fribox/Bind:v1.00
+docker tag fribox/Bind:latest streamwang/Bind:v1.00
 #导出镜像保存
-docker save streamwang/bind -o FriBox.Docker-Bind.tar
+docker save streamwang/Bind -o FriBox.Docker-Bind.tar
 #导入镜像
 docker load -i FriBox.Docker-Bind.tar
 #登录Docker
 docker login
 #上传镜像
-docker push streamwang/bind:v1.00
+docker push streamwang/Bind:v1.01
+#启动容器
+docker run --name Bind-Service -d --restart=always --env ROOT_PASSWORD="PassWord" --publish 53:53/tcp --publish 53:53/udp --publish 10000:10000/tcp fribox/bind
+#变量
+ROOT_PASSWORD变量为Root账户密码
